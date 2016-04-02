@@ -1,5 +1,5 @@
 /*
- * File:   main.cpp
+ * File:   IsPrime.cpp
  * Author: Kodemikkel
  *
  * Created on 1. april 2016, 21:18
@@ -8,12 +8,14 @@
  /*
  * ToDo:
  *  Add the posibility to check float numbers, not just integers (if possible)
- *  Add single keypress to exit, now you have to enter a value to exit
  */
 
 #include <iostream>
-
+#include <conio.h>
 using namespace std;
+
+#define U_Y 89 // Uppercase letter 'Y' code
+#define L_Y 121 // Lowercase letter 'y' code
 
 bool is_prime(int number) {
   int i;
@@ -31,30 +33,38 @@ bool is_prime(int number) {
 }
 
 int main() {
-    char redo;
-    do{
-      int number;
-      input:
-        cout << "Enter a number: ";
-        cin >> number;
-        // Verify the input, if it's not an integer, ask for input again
-        // If we do not verify the input, the program will loop until stopped when some other data type is entered
-        if(!cin) {
-          cin.clear();
-          cin.ignore();
-          cout << "The value you specified is not an integer." << endl;
+  int number, c;
+  // "input" label
+  input:
+    cout << "Enter a number: ";
+    cin >> number;
+    // Verify the input, if it's not an integer, ask for input again
+    // If we do not verify the input, the program will loop until stopped when some other data type is entered
+    if(!cin) {
+      cin.clear();
+      cin.ignore();
+      cout << "The value you specified is not an integer." << endl;
+      goto input;
+    }
+    if(is_prime(number)) {
+      cout << "The number you've entered (" << number << ") is a prime number." << endl;
+    } else {
+      cout << "The number " << number << " is not a prime number." << endl;
+    }
+
+    cout << "Press \"Y\" to enter another number or any other key to exit." << endl;
+    // Check if the key "Y" is pressed, if so, return to "input" label
+    while(1) {
+      // getch() returns the key code for the button pressed (integer)
+      switch((c = getch())) {
+        case U_Y:
           goto input;
-        }
-        if(is_prime(number)) {
-          cout << "The number you've entered (" << number << ") is a prime number." << endl;
-        } else {
-          cout << "The number " << number << " is not a prime number." << endl;
-        }
-
-        cout << "Type 'y' or 'Y' to enter another number or any other value to exit." << endl;
-        cin >> redo;
-
-        } while(redo == 'y' || redo == 'Y');
-
-      return 0;
+          break;
+        case L_Y:
+          goto input;
+          break;
+        default:
+          return 0;
+      }
+    }
 }
