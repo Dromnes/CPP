@@ -6,31 +6,14 @@
  */
 
  /*
- * ToDo:
- *  Add the posibility to check float numbers, not just integers (if possible)
+ * TODO:
+ *  Add the possibility to check float numbers, not just integers (if possible)
  */
 
-#include <iostream>
-#include <conio.h>
-using namespace std;
+#include "is_prime.h"
 
 #define U_Y 89 // Uppercase letter 'Y' code
 #define L_Y 121 // Lowercase letter 'y' code
-
-bool is_prime(int number) {
-  int i;
-  bool prime = true;
-  for(i = 2; i < number; i++) {
-    if(!(number % i)) {
-      cout << "Dividable by " << i << endl;
-      prime = false;
-    }
-  } if (prime) {
-      return true;
-  } else {
-      return false;
-  }
-}
 
 int main() {
   int number, c;
