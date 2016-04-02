@@ -1,0 +1,7 @@
+########Prime number checker########
+
+This is a program that checks a number submitted by the user.
+If the number is not a prime number, it shows the user what numbers it is divisable by.
+
+Author: Kodemikkel
+Created 1. april 2016
