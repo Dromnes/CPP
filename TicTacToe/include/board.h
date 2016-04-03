@@ -20,6 +20,7 @@ class Game {
 
   public:
     Game() {
+      this->drawBoard();
       this->getInput();
     }
     
@@ -79,7 +80,6 @@ class Game {
 
     void getInput() {
       int position;
-      this->drawBoard();
       cout << "Player " << this->player << ", enter the square you want to place your mark in." << endl;
       posLabel:
         cin >> position;
@@ -113,6 +113,7 @@ class Game {
       char mark = (this->player == 1)?'X':'O';
       square[pos] = mark;
       int gameState = checkGameState();
+      this->drawBoard();
       if(!gameState) {
         (this->player == 1) ? this->player = 2 : this->player = 1;
         this->getInput();
